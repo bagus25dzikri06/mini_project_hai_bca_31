@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="copyright" content="MACode ID, https://macodeid.com/">
+
+  <title>Product Apps</title>
+
+  <link rel="stylesheet" href="css/maicons.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/w3.css">
+
+  <script th:src="@{/js/theme.js}"></script>
+  <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/js/google-maps.js}"></script>
+  <script th:src="@{/js/jquery-3.5.1.min.js}"></script>
+  <script th:src="@{/js/wow.min.js}"></script>
+
+  <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+</head>
+
+<body>
+  <!-- Back to top button -->
+  <div class="back-to-top"></div>
+
+  <header id="header">
+    <nav class="navbar navbar-expand-lg navbar-light sticky" style="background-color: #e7e7f0;" data-offset="500">
+      <div class="container">
+        <a href="#header" class="navbar-brand"><b>PRODUCT<span class="text-primary">APPS</b></span></a>
+
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="btn btn-primary ml-lg-2" href="/register" data-role="smoothscroll"><b>Sign-Up</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#team" data-role="smoothscroll"><b>Developer Team</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about" data-role="smoothscroll"><b>About</b></a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+    <div class="container" id="home">
+      <div class="page-banner home-banner">
+        <div class="row align-items-center flex-wrap-reverse h-100">
+          <div class="col-md-6 py-5 wow fadeInLeft">
+            <h2><b>Product App</b></h2>
+            <p class="text-lg text-grey mb-5">
+            This apps will check your resume with a vacancy to see how much suitable you for a job.
+            <br><br>It's presented for Final Project <br>
+            in Studi Independent Kampus Merdeka
+            </p>
+            <a href="#" class="btn btn-primary btn-split">Watch Video <div class="fab"><span class="mai-play"></span></div></a>
+          </div>
+          <div class="col-md-6 py-5 wow zoomIn">
+            <div class="img-fluid text-center">
+              <img src="../img/warehouse.jpg" class="w3-round w3-image" width="400" height="250" alt="Norway">
+            </div>
+          </div>
+        </div>
+        <a href="#team" class="btn-scroll" data-role="smoothscroll"><span class="mai-arrow-down"></span></a>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-section" id="team">
+    <div class="container text-center">
+    <h3 class="mb-2"><b>Developer Team</b></h2>
+      <br>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card-service wow fadeInUp" style="background-color: #e7e7f0;">
+            <div class="header">
+              <img src="../img/person/akhmad.jpg" class="w3-circle" width="150" height="150" alt="">
+            </div>
+            <div style="font-color: white;">
+              <h5>Bagas </h5>
+              <p>Program studi<br>Universitas</p>
+              <a href="" class="btn btn-primary" target="blank">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card-service wow fadeInUp" style="background-color: #e7e7f0;">
+            <div class="header">
+              <img src="../img/person/person_1.jpg" class="w3-circle" width="150" height="150" alt="">
+            </div>
+            <div style="font-color: white;">
+              <h5>Wildan Adhitya Geraldine</h5>
+              <p>Teknik Informatika<br>Universitas Bale Bandung</p>
+              <a href="https://www.instagram.com/geraldine_adhitya/" class="btn btn-primary" target="blank">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card-service wow fadeInUp" style="background-color: #e7e7f0;">
+            <div class="header">
+              <img src="../img/person/arum.jpg" class="w3-circle" width="150" height="150" alt="">
+            </div>
+            <div style="font-color: white;">
+              <h5>Erwin</h5>
+              <p>Program Studi<br>Universitas</p>
+              <a href="" class="btn btn-primary" target="blank">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .container -->
+    <a href="#about" class="btn-scroll" data-role="smoothscroll"><span class="mai-arrow-down"></span></a>
+  </div> <!-- .page-section -->
+
+  <div class="page-section page-banner home-banner container" id="about" style="background-color: #e7e7f0;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 py-3 wow fadeInUp">
+          <span class="subhead">About</span>
+          <h2 class="title-section">HAI BCA</h2>
+          <div class="divider"></div>
+          <p><b>Are you ready to take your dream to the next level ?</b><br>
+            Pas banget, Hackathon di BCA atau bisa disebut HAI BCA bisa jadi tempat mewujudkan mimpi kamu!
+            HAI BCA siap ngasih kesempatan untuk kamu stand out dengan tech skill kamu dan 
+            berkarya dengan ide-ide kamu melalui ...
+          </p>
+          <a href="https://karir.bca.co.id/info-artikel/informasi/hackathon-in-bca-2021-hai-bca" target="blank" class="btn btn-primary mt-3">Read More</a>
+        </div>
+        <div class="col-lg-6 py-3 wow fadeInRight">
+          <div class="img-fluid py-3 text-center">
+            <img src="../img/orbit_ai_gen_y.jpg" class="w3-round w3-image" width="390" height="400" alt="">
+          </div>
+        </div>
+      </div>
+    </div> <!-- .container -->
+    <a href="#footer" class="btn-scroll" data-role="smoothscroll"><span class="mai-arrow-down"></span></a>
+  </div> <!-- .page-section -->
+  
+  <footer id="footer" class="page-footer" style="background-color: #181523;">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-3 py-3">
+          <h4><b>PRODUCT APP</b></h4>
+          <p>Follow us !</p>
+
+          <div class="social-media-button">
+            <a><span class="mai-logo-facebook-f"></span></a>
+            <a><span class="mai-logo-twitter"></span></a>
+            <a><span class="mai-logo-google-plus-g"></span></a>
+            <a><span class="mai-logo-instagram"></span></a>
+            <a><span class="mai-logo-youtube"></span></a>
+          </div>
+        </div>
+      </div>
+      <p class="text-center" id="copyright">Copyright &copy; 2021. This template design and develop by <a href="https://macodeid.com/" target="_blank">MACode ID</a></p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
