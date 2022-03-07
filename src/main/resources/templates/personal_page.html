@@ -5,11 +5,40 @@
         <title>
             Personal Page
         </title>
+        <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+        <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     </head>
     <body>
         <h1>
             Welcome to the Personal Page
             <span th:text="${userLogin}"></span>
         </h1>
+
+        <!-- Button HTML (to Trigger Modal) -->
+        <a href="#logOutModal" role="button" class="btn btn-lg btn-primary" data-bs-toggle="modal">
+            Navigate to logout
+        </a>   
+        
+        <!-- Modal HTML -->
+        <div id="logOutModal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Log Out Confirmation</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to log out?</p>
+                        <!--p class="text-secondary"><small>If you don't save, your changes will be lost.</small></p-->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <a href="/logout" class="btn btn-primary" role="button">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

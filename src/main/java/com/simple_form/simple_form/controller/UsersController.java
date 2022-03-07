@@ -36,6 +36,12 @@ public class UsersController {
         return registeredUser == null ? "error_page" : "redirect:/login";
     }
 
+    @GetMapping("/logout")
+    public String logout(@ModelAttribute UsersModel usersModel){
+        System.out.println("logout request: " + usersModel );
+        return "redirect:/login";
+    }
+
     @PostMapping("/app")
     public String login(@ModelAttribute UsersModel usersModel, Model model){
         System.out.println("login request: " + usersModel );

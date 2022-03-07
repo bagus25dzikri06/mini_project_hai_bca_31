@@ -22,18 +22,23 @@ public class UsersService {
 
             AESPasswordEncryptorDecryptor aesPasswordEncryptorDecryptor = new AESPasswordEncryptorDecryptor();
             String encryptedPassword = aesPasswordEncryptorDecryptor.encrypt(password, secretKey);
-            String decryptedPassword = aesPasswordEncryptorDecryptor.decrypt(encryptedPassword, secretKey);
 
             UsersModel usersModel = new UsersModel();
             usersModel.setLogin(login);
-            usersModel.setPassword(decryptedPassword);
+            usersModel.setPassword(encryptedPassword);
             usersModel.setEmail(email);
+
             return usersRepository.save(usersModel);            
         }
     }
 
     public UsersModel authenticate(String login, String password){
-        return usersRepository.findByLoginAndPassword(login, password).orElse(null);
+        final String secretKey = "secrete";
+
+        AESPasswordEncryptorDecryptor aesPasswordEncryptorDecryptor = new AESPasswordEncryptorDecryptor();
+        String encryptedPassword = aesPasswordEncryptorDecryptor.encrypt(password, secretKey);
+
+        return usersRepository.findByLoginAndPassword(login, encryptedPassword).orElse(null);
     }
 
 }
