@@ -19,12 +19,12 @@ public class UsersController {
 
     private final UsersService usersService;
 
-    public UsersController(UsersService usersService) {
+    public UsersController(UsersService usersService){
         this.usersService = usersService;
     }
-
+    
     @GetMapping("/register")
-    public String getRegisterPage(Model model) {
+    public String getRegisterPage(Model model){
         model.addAttribute("registerRequest", new UsersModel());
         return "register_page";
     }
