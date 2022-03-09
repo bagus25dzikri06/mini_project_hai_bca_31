@@ -4,8 +4,6 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.*;
-
 @Entity
 @Table(name = "products_table")
 public class ProductModel {
