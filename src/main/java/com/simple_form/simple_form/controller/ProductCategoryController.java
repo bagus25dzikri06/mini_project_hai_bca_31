@@ -51,7 +51,7 @@ public class ProductCategoryController {
         @PathVariable Integer id
     ) {
         ProductCategoryModel _productCategoryModel = productCategoryRepository.findById(id).orElseThrow(
-            () -> new ResourceNotFoundException("Not found Product with id = " + id)
+            () -> new ResourceNotFoundException("Not found Product Category with id = " + id)
         );
 
         _productCategoryModel.setCategory(productCategoryModel.getCategory());
