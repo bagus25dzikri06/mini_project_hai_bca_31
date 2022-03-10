@@ -3,6 +3,7 @@ package com.simple_form.simple_form.controller;
 import java.net.URI;
 import java.util.Optional;
 
+import com.simple_form.simple_form.exception.ResourceNotFoundException;
 import com.simple_form.simple_form.model.ProductCategoryModel;
 import com.simple_form.simple_form.repository.ProductCategoryRepository;
 import com.simple_form.simple_form.repository.ProductRepository;
@@ -10,6 +11,7 @@ import com.simple_form.simple_form.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,20 +45,22 @@ public class ProductCategoryController {
         return ResponseEntity.created(location).body(savedProductCategory);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ProductCategoryModel> update(@PathVariable Integer id, @Validated @RequestBody ProductCategoryModel productCategoryModel) {
-        Optional<ProductCategoryModel> optionalCategory = productCategoryRepository.findById(id);
-        if (!optionalCategory.isPresent()) {
-            return ResponseEntity.unprocessableEntity().build();
-        }
+    @PutMapping("/edit/{id}")
+    public ResponseEntity<ProductCategoryModel> update(
+        @RequestBody @Validated ProductCategoryModel productCategoryModel,
+        @PathVariable Integer id
+    ) {
+        ProductCategoryModel _productCategoryModel = productCategoryRepository.findById(id).orElseThrow(
+            () -> new ResourceNotFoundException("Not found Product with id = " + id)
+        );
 
-        productCategoryModel.setId(optionalCategory.get().getId());
-        productCategoryRepository.save(productCategoryModel);
+        _productCategoryModel.setCategory(productCategoryModel.getCategory());
+        _productCategoryModel.setDescription(productCategoryModel.getDescription());
 
-        return ResponseEntity.noContent().build();
+        return new ResponseEntity<>(productCategoryRepository.save(_productCategoryModel), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<ProductCategoryModel> delete(@PathVariable Integer id) {
         Optional<ProductCategoryModel> optionalCategory = productCategoryRepository.findById(id);
         if (!optionalCategory.isPresent()) {
