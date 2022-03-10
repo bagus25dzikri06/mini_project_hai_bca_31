@@ -26,18 +26,18 @@
                 </tr>
             </thead>
             <tbody>
-                <!--tr th:each="#">
-                    <td th:text="#">Product ID</td>
-                    <td th:text="#">Product Name</td>
-                    <td th:text="#">Product Number</td>
-                    <td th:text="#">Category ID</td>
-                    <td th:text="#">Stock</td>
+                <tr th:each="product : ${getProductPage}">
+                    <td>[[${product.id}]]</td>
+                    <td>[[${product.name}]]</td>
+                    <td>[[${product.product_num}]]</td>
+                    <td>[[${product.product_category_id}]]</td>
+                    <td>[[${product.stock}]]</td>
                     <td>
                         <a th:href="/@{'/edit/' + ${product.id}}">Edit</a>
                         &nbsp;&nbsp;&nbsp;
                         <a th:href="/@{'/delete/' + ${product.id}}">Delete</a>
                     </td>
-                </tr-->
+                </tr>
             </tbody>
         </table>
     </div>   

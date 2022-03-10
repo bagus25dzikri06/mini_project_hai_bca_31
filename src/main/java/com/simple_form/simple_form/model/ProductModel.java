@@ -15,6 +15,7 @@ public class ProductModel {
     @Column(name = "product_name", nullable = false)
     String name;
 
+    @Column(nullable = false)
     Long product_num;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -22,6 +23,7 @@ public class ProductModel {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     ProductCategoryModel productCategoryModel;
 
+    @Column(name = "product_stock", nullable = false)
     Integer stock;
 
     public Integer getId() {

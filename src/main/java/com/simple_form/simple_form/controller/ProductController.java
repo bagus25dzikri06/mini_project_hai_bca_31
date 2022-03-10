@@ -1,17 +1,21 @@
 package com.simple_form.simple_form.controller;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 
+import com.simple_form.simple_form.exception.ResourceNotFoundException;
 import com.simple_form.simple_form.model.ProductCategoryModel;
 import com.simple_form.simple_form.model.ProductModel;
 import com.simple_form.simple_form.repository.ProductCategoryRepository;
 import com.simple_form.simple_form.repository.ProductRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 //import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 //import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,29 +55,23 @@ public class ProductController {
         return ResponseEntity.created(location).body(savedProduct);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/edit/{id}")
     public ResponseEntity<ProductModel> update(
         @RequestBody @Validated ProductModel productModel,
         @PathVariable Integer id
     ) {
-        Optional<ProductCategoryModel> optionalCategory = productCategoryRepository.findById(productModel.getProductCategoryModel().getId());
-        if (!optionalCategory.isPresent()) {
-            return ResponseEntity.unprocessableEntity().build();
-        }
+        ProductModel _productModel = productRepository.findById(id).orElseThrow(
+            () -> new ResourceNotFoundException("Not found Product with id = " + id)
+        );
 
-        Optional<ProductModel> optionalProduct = productRepository.findById(id);
-        if (!optionalProduct.isPresent()) {
-            return ResponseEntity.unprocessableEntity().build();
-        }
+        _productModel.setName(productModel.getName());
+        _productModel.setProduct_num(productModel.getProduct_num());
+        _productModel.setStock(productModel.getStock());
 
-        productModel.setProductCategoryModel(optionalCategory.get());
-        productModel.setId(optionalProduct.get().getId());
-        productRepository.save(productModel);
-
-        return ResponseEntity.noContent().build();
+        return new ResponseEntity<>(productRepository.save(_productModel), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<ProductModel> delete(@PathVariable Integer id) {
         Optional<ProductModel> optionalProduct = productRepository.findById(id);
         if (!optionalProduct.isPresent()) {
@@ -89,6 +87,14 @@ public class ProductController {
     public ResponseEntity<Page<ProductModel>> getAll(Pageable pageable) {
         return ResponseEntity.ok(productRepository.findAll(pageable));
     }*/
+
+    @GetMapping
+    public String getProductPage(Model model) {
+        List<ProductModel> products = productRepository.findAll();
+        model.addAttribute("getProductPage", products);
+
+        return "product_page";
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductModel> getById(@PathVariable Integer id) {

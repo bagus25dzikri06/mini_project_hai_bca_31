@@ -15,7 +15,7 @@ public class ProductCategoryModel {
     @Column(name = "product_category", nullable = false, length = 100)
     String category;
 
-    @Column(name = "product_desc")
+    @Column(name = "product_desc", nullable = false)
     String description;
 
     @OneToMany(mappedBy = "productCategoryModel", cascade = CascadeType.ALL)
